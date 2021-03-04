@@ -1,0 +1,30 @@
+{
+  "name": "projet_nod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RuizLouka/projet_nod/new/main"
+  },
+  "author": "RuizLouka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RuizLouka/projet_nod/new/main"
+  },
+  "homepage": "https://github.com/RuizLouka/api_nod#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "file-system": "^2.2.2",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
