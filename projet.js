@@ -6,12 +6,7 @@ const port = 3000
 const app = express()
 
 
-  connexionbase = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "utilisateur"
-  });
+  connexionbase = mysql.createConnection({host: "localhost",user: "root",password: "root",database: "utilisateur"});
   const bodyP = require('body-parser');
   const file = require('express-fileupload')
   chemin = require('path');
@@ -33,10 +28,10 @@ app.post('/utilisateur/', (req, res) => {
     const valeur = req.body
    
     if (!req.files)
-      return res.status(422).json('vous n\'avez pas mis de photo')
+      return res.status(404).json('il faut une image')
   
     const file = req.files.image
-    const file_name = new Date().getTime() + '_' + file.name
+    const file_name = + file.name + new Date().getTime() 
     params.image = `image/${file_name}`
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.mimetype === "image/gif") {
       file.mv('public/image/' + file_name, (err) => {
@@ -46,7 +41,7 @@ app.post('/utilisateur/', (req, res) => {
         connexionbase.query('INSERT INTO utilisateur SET ?', [valeur], (err, row) => {
           if (err) return res.status(500).json(`${err.message}`)
           console.log(row)
-          res.send(`users avec les parametres ${params.name}, ${params.firstname}, ${params.email}, ${params.date_naissance} ont été ajouté`)
+          res.send(`users avec les parametres ${params.name}, ${params.firstname}, ${params.email}, ${params.date_naissance},${params.mot_passe},${params.civilité},${params.civilité}  ont été ajouté`)
         })
       })
     } else {
@@ -58,14 +53,9 @@ app.post('/utilisateur/', (req, res) => {
 app.put('/utilisateur/:id_utilisateur', (req, res) => {
     const params = req.body
   
-    var file = req.files.image
-    const file_name = new Date().getTime() + '_' + file.name
-    params.image = `image/${file_name}`
+   
   
-    if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
-      file.mv('public/image/' + file_name, (err) => {
-        if (err)
-          return res.status(500).json(err)
+ 
   
         connexionbase.query('UPDATE users SET ? WHERE utilisateur_id = ?', [params, req.params.id_utilisateur], function (err, row) {
   
@@ -84,7 +74,7 @@ app.get('/utilisateur', (req, res) => {
     if (Object.keys(resultat).length == 0) {
       res.status(400).json(`aucun utilisateur trouver `)
     }
-    if (err) res.status(400).send(err)
+    if (err) res.status(404).send(err)
     res.json(result);
   })
 });
