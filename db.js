@@ -3,6 +3,4 @@ connexionbase = mysql.createConnection({host: "localhost",user: "root",password:
   const file = require('express-fileupload')
   chemin = require('path');
 
-  connexionbase.connect(function (err) {
-  if (err) throw err;
-  console.log("Connecté à la base de données MySQL!");
+module.exports = connexionbase;
