@@ -4,7 +4,9 @@ const mysql = require('mysql');
 const fs = require('fs')
 const port = 3000
 const app = express()
-
+const bodyP = require('body-parser');
+  const file = require('express-fileupload')
+  chemin = require('path');
 
 connexionbase.connect(function (err) {
   if (err) throw err;
