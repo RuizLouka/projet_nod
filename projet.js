@@ -6,6 +6,9 @@ const port = 3000
 const app = express()
 
 
+connexionbase.connect(function (err) {
+  if (err) throw err;
+  console.log("Connecté à la base de données MySQL!");
   
 
 app.useapp(bodyP.urlencoded({
