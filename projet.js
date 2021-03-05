@@ -39,8 +39,8 @@ app.post('/utilisateur/', (req, res) => {
           return res.status(500).json(err)
   
         connexionbase.query('INSERT INTO utilisateur SET ?', [valeur], (err, row) => {
-          if (err) return res.status(500).json(`${err.message}`)
-          console.log(row)
+          if (err) return res.status(400).json(`${err.message}`)
+    
           res.send(`users avec les parametres ${params.name}, ${params.firstname}, ${params.email}, ${params.date_naissance},${params.mot_passe},${params.civilité},${params.civilité}  ont été ajouté`)
         })
       })
@@ -104,4 +104,4 @@ app.delete('/utilisateur/:id_utilisateur', (req, res) => {
 
 
 
-app.listen(port, () => console.log(`connecter au port ${port}`))
+app.listen(port, () => console.log(`connecter {port}`))
