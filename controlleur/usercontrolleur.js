@@ -1,30 +1,30 @@
 const { request } = require('express');
 const dataBase = require('../models/usermodel');
 
-const users = dataBase.users;
+const utilisateur = dataBase.users;
 
 const find = (request, response) => {
     const userid = request.params.id;
 
     users.findById(userid)
-    .then((user) => {
-        if (!user) {
+    .then((utilisateur) => {
+        if (!utilisateur) {
             return res.status(404).json({
-                message: "User non trouvé avec l'id " + req.params.id,
+                message: "Utilisateur non trouvé avec l'id " + req.params.id,
             });
         }
-        res.status(200).json(user);
-        console.log(user);
+        res.status(200).json(utilisateur);
+        console.log(utilisateur);
     })
     .catch((err) => {
         return res.status(500).json({
-            message: "User non trouvé avec l'id " + req.params.id,
+            message: "Utilisateur non trouvé avec l'id " + req.params.id,
         });
     });
 };
 
 const findAll = (request, response) => {
-    users.find()
+    utilisateur.find()
     .then((data) => {
         res.status(200).json(data);
     })
@@ -35,10 +35,11 @@ const findAll = (request, response) => {
     });
 };
 
+
 const create = (request, response) => {
     // if(!request.body) response.send({ message: "Les champs sont obligatoires"});
     const {nom,prenom,userName,civilite,mail,phone,image,role,date_naissance, mot_passe, telephone} = request.body;
-    const newUsers = new users(
+    const newUsers = new utilisateur(
         {
             nom:nom,
             prenom: prenom,
@@ -67,7 +68,7 @@ const create = (request, response) => {
 const update = (request, response) => {
     const userid = request.params.id;
     console.log(request.body)
-    users.findByIdAndUpdate(userid, request.body, { new: true })
+    utilisateur.findByIdAndUpdate(userid, request.body, { new: true })
         .then(data => {
             if(!data) return response.send({ message: `Mise à jour impossible` })
             response.send({ message: `Mise à jour reussite` })
@@ -76,25 +77,25 @@ const update = (request, response) => {
 const deletes = (request, response) => {
     const userid = request.params.id;
 
-    users.findByIdAndRemove(userid)
+    utilisateur.findByIdAndRemove(userid)
     .then((data) => {
         if (data) {
             return res.status(404).json({
-                message: "User non trouvé",
+                message: "Utilisateur non trouvé",
             });
         }
         res.json({
-            message: "User supprimé"
+            message: "Utilisateur supprimé"
         });
     })
     .catch((err) => {
         return res.status(500).json({
-            message: "Impossible de supprimer le user",
+            message: "Impossible de supprimer l'utilisateur",
         });
     });
     
 };
 
-module.exports = {find,findAll,create, update,deletes
-   
+module.exports = {
+    find,findAll,create,update, deletes
 };
