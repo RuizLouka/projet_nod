@@ -18,7 +18,7 @@ api.use(formData.format());
 api.use(formData.union());
 
 const userRoutes = require('./route/userroute');
-api.use('/users', userRoutes());
+api.use('/utilisateur', userRoutes());
 
 const port = 3000;
 api.listen(port, () => {
