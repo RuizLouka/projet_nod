@@ -1,8 +1,7 @@
 const mongo = require('mongoose')
-  
+  mongo.Promise = global.Promise;
 const connexion = require('../db');
 
-mongoose.Promise = global.Promise;
 
 const users = mongoose.model("utilisateur",
     mongoose.Schema({
