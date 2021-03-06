@@ -1,5 +1,5 @@
 const { request } = require('express');
-const dataBase = require('../models/usermodel');
+const dataBase = require('../model/usermodel');
 
 const utilisateur = dataBase.utilisateur;
 
