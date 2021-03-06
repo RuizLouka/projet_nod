@@ -1,7 +1,7 @@
 const { request } = require('express');
 const dataBase = require('../models/usermodel');
 
-const utilisateur = dataBase.users;
+const utilisateur = dataBase.utilisateur;
 
 const find = (request, response) => {
     const userid = request.params.id;
