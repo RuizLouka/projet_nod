@@ -6,7 +6,7 @@ const utilisateur = dataBase.utilisateur;
 const find = (request, response) => {
     const userid = request.params.id;
 
-    users.findById(userid)
+    utilisateur.findById(userid)
     .then((utilisateur) => {
         if (!utilisateur) {
             return res.status(404).json({
