@@ -1,19 +1,19 @@
 const app = () => {
     const router = require('express').Router();
-    const users = require('../controlleur/usercontrolleur');
+    const utilisateur = require('../controlleur/usercontrolleur');
 
     
-    router.delete('/:userid', users.deletes);
+    router.delete('/:userid', utilisateur.deletes);
    
-    router.get('/', users.findAll);
+    router.get('/', utilisateur.findAll);
 
-    router.put('/:userid', users.update);
+    router.put('/:userid', utilisateur.update);
 
-    router.get('/:userid', users.find);
+    router.get('/:userid', utilisateur.find);
     
-    router.put('/:userid', users.update);
+    router.put('/:userid', utilisateur.update);
     
-    router.post('/', users.create);
+    router.post('/', utilisateur.create);
 
     
     return router;
