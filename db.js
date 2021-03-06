@@ -1,7 +1,7 @@
   
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://colin:root@cluster0.7v9wl.mongodb.net/utilisateur", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://127.0.0.1:27017/Utilisateur", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connecté a MongoDB');
     }).catch((err) => console.log(err));
