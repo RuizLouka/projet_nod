@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "file-system": "^2.2.2",
+    "mongoose": "^5.11.19",
     "mysql": "^2.18.1",
     "path": "^0.12.7"
   },
